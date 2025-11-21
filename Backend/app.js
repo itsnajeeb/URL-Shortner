@@ -14,10 +14,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cors({
-    origin: "https://url-shortner-frontend-oyr1.onrender.com/", 
-    methods: "GET,POST,PUT,DELETE",
-    credentials: "include"
+  origin: [
+    "http://localhost:5173",
+    "https://url-shortner-frontend-oyr1.onrender.com"
+  ],
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true
 }));
+
 
 app.use('/api/links', urlRoutes)
 app.use('/api/code', urlRoutes)
