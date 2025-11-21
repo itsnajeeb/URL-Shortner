@@ -25,7 +25,7 @@ export const shortUrl = async (req, res, next) => {
         return res.status(200).json({
             message: "URL shortened successfully",
             data: shortedData,
-            shortUrl: process.env.LOCALHOST_URL + shortedData.short_code
+            shortUrl: process.env.VITE_LOCALHOST_URL + shortedData.short_code
         });
     } catch (err) {
         next(err)// Pass error to your centralized error handler

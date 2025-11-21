@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {creatrShortUrl} from '../api/LinkService.js'
+import { creatrShortUrl } from '../api/LinkService.js'
 
 const CreateShorUrlForm = () => {
     const navigate = useNavigate()
@@ -20,8 +20,8 @@ const CreateShorUrlForm = () => {
             //     url,
             //     customCode
             // });
-            
-            const {data} =await creatrShortUrl({url, customCode})
+
+            const { data } = await creatrShortUrl({ url, customCode })
 
             console.log("Data >", data);
 
@@ -73,10 +73,13 @@ const CreateShorUrlForm = () => {
 
                     <button
                         type="submit"
-                        className="w-fit px-6 mt-5 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                        disabled={loading}
+                        className={`w-fit px-6 mt-5 py-2 rounded-lg transition
+        ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700 text-white"}`}
                     >
                         {loading ? "Shortening..." : "Shorten URL"}
                     </button>
+
                     <button type="button" className="text-blue-500 ml-2 cursor-pointer" onClick={handleSeeList}>see list</button>
                 </form>
 
@@ -85,6 +88,7 @@ const CreateShorUrlForm = () => {
                     <div className="mt-6">
                         <h2 className="text-base font-semibold mb-2">Your Shortened URL</h2>
                         <div className="p-4 bg-gray-100 rounded-lg flex items-center justify-between">
+                            
                             <a href={shortUrl} target="_blank" rel="noreferrer" className="text-blue-600 underline">
                                 {shortUrl}
                             </a>
