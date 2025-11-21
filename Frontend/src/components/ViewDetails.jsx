@@ -1,16 +1,17 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { getLinkStats } from '../api/LinkService';
 
 const ViewDetails = () => {
     const navigate = useNavigate();
     const [data, setData] = useState([]);  // <-- array
     const { code } = useParams();
-    const URL = "http://localhost:3000";
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`${URL}/api/code/${code}`);
+            // const res = await axios.get(`${URL}/api/code/${code}`);
+            const res = await getLinkStats(code);
             setData(res.data?.data || []);       // <-- always an array
         } catch (error) {
             console.log(error);

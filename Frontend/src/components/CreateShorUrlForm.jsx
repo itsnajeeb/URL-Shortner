@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {creatrShortUrl} from '../api/LinkService.js'
 
 const CreateShorUrlForm = () => {
     const navigate = useNavigate()
@@ -15,10 +16,12 @@ const CreateShorUrlForm = () => {
         try {
             setLoading(true);
 
-            const { data } = await axios.post("http://localhost:3000/api/links", {
-                url,
-                customCode
-            });
+            // const { data } = await axios.post("http://localhost:3000/api/links", {
+            //     url,
+            //     customCode
+            // });
+            
+            const {data} =await creatrShortUrl({url, customCode})
 
             console.log("Data >", data);
 

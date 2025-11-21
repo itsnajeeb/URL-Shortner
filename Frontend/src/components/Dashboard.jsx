@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { deleteLink, getAllLinks } from '../api/LinkService.js'
 
 const Dashboard = () => {
-    const URL = "http://localhost:3000";
     const navigate = useNavigate()
     const [links, setLinks] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +12,7 @@ const Dashboard = () => {
     const fetchData = async () => {
         setIsLoading(true);
         try {
-            const { data } = await axios.get(`${URL}/api/links`)
+            const { data } = await getAllLinks()
             setLinks(data.data);
         } catch (err) {
             console.log(err);
@@ -43,7 +43,8 @@ const Dashboard = () => {
         setIsLoading(true);
 
         try {
-            const { data } = await axios.delete(`${URL}/api/code/${code}`);
+            // const { data } = await axios.delete(`${URL}/api/code/${code}`);
+            const { data } = await deleteLink(code);
             console.log("Deleted >", data);
 
             fetchData();  // reload links
@@ -55,7 +56,7 @@ const Dashboard = () => {
         }
     };
 
-    const viewDetails = (code)=>{
+    const viewDetails = (code) => {
         navigate(`/code/:${code}`)
     }
 
