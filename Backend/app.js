@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cors({
-    origin: "http://localhost:5173", // your React app
+    origin: "https://url-shortner-frontend-oyr1.onrender.com/", 
     methods: "GET,POST,PUT,DELETE",
     credentials: "include"
 }));
