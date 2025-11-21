@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const API_BASE_URL = "http://localhost:3000/api";
-const BACKEND_API_URL = "https://url-shortner-swbt.onrender.com/api/links";
+const BACKEND_API_URL = "https://url-shortner-swbt.onrender.com/api";
 
 export const creatrShortUrl = async (payload) => {
     // console.log("DA",payload);
