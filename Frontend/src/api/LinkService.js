@@ -6,17 +6,17 @@ const BACKEND_API_URL = "https://url-shortner-frontend-oyr1.onrender.com";
 export const creatrShortUrl = async (payload) => {
     console.log("DA",payload);
     
-  return await axios.post(`${API_BASE_URL}/links`, payload);
+  return await axios.post(`${BACKEND_API_URL}/links`, payload);
 };
 
 export const getAllLinks = async () => {
-  return await axios.get(`${API_BASE_URL}/links`);
+  return await axios.get(`${BACKEND_API_URL}/links`);
 };
 
 export const getLinkStats = async (code) => {
-  return await axios.get(`${API_BASE_URL}/links/${code}`);
+  return await axios.get(`${BACKEND_API_URL}/links/${code}`);
 };
 
 export const deleteLink = async (code) => {
-  return await axios.delete(`${API_BASE_URL}/links/${code}`);
+  return await axios.delete(`${BACKEND_API_URL}/links/${code}`);
 };
