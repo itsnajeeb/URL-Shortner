@@ -23,7 +23,7 @@ const Navbar = () => {
         </Link>
 
         <a
-          href="https://github.com/"
+          href="https://github.com/itsnajeeb/URL-Shortner/tree/main"
           target="_blank"
           className="text-gray-700 hover:text-blue-600 transition"
         >
