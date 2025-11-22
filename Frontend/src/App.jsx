@@ -15,9 +15,9 @@ const App = () => {
       <div className='flex-1'>
         <Routes >
           <Route path='/' element={<Dashboard />} />
-          <Route path='/:id' element={<Redirect />} />
           <Route path='/add' element={<CreateShorUrlForm />} />
           <Route path='/code/:code' element={<ViewDetails />} />
+          <Route path='/:id' element={<Redirect />} />
         </Routes>
       </div>
 

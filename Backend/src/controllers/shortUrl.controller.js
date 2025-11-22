@@ -113,3 +113,22 @@ export const getAllLinks = async (req, res, next) => {
         next(err); // Pass error to your centralized error handler
     }
 };
+
+
+export const healthz = (req, res) => {
+    try {
+        return res.status(200).json({
+            ok: true,
+            message: "Feel free to test more API",
+            version: "1.0",
+            uptime: process.uptime(),
+            timestamp: new Date().toISOString()
+        });
+    } catch (error) {
+        console.error("ERROR > ", error);
+        return res.status(500).json({
+            ok: false,
+            message: "Server error"
+        });
+    }
+};

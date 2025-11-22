@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import DbConnection from './src/config/db.js'
 import urlRoutes from './src/routes/shortUrl.route.js'
 import { errorHandler } from './src/utils/errorHandler.js'
-import { redirectToOriginalUrl } from './src/controllers/shortUrl.controller.js'
+import { healthz, redirectToOriginalUrl } from './src/controllers/shortUrl.controller.js'
 
 dotenv.config('./.env')
 const app = express()
@@ -23,6 +23,8 @@ app.use(cors({
 }));
 
 
+app.get('/api/healthz', healthz)
+
 app.use('/api/links', urlRoutes)
 app.use('/api/code', urlRoutes)
 app.get('/api/:id', redirectToOriginalUrl)
@@ -30,5 +32,5 @@ app.use(errorHandler);
 
 app.listen(3000, () => {
     DbConnection()
-    console.log(`App is running on localhost://${3000}`)
+    console.log(`App is running on localhost:/${3000}`)
 })
