@@ -7,13 +7,18 @@ const Redirect = () => {
     const executed = useRef(false);
 
     useEffect(() => {
+
         if (executed.current) return; // prevents re-run
         executed.current = true;
 
         const handleRedirect = async () => {
             try {
                 const response = await RedirectAPI(id);
+                console.log("RESPONSE > ", response);
+                
                 const originalUrl = response.data.original_url;
+                console.log("ORIGINAL URL ",originalUrl);
+                
                 window.location.href = originalUrl;
             } catch (error) {
                 console.log(error);
