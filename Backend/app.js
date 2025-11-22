@@ -25,7 +25,7 @@ app.use(cors({
 
 app.use('/api/links', urlRoutes)
 app.use('/api/code', urlRoutes)
-app.get('/:id', redirectToOriginalUrl)
+app.get('/api/:id', redirectToOriginalUrl)
 app.use(errorHandler);
 
 app.listen(3000, () => {

@@ -5,6 +5,7 @@ import ViewDetails from './components/ViewDetails'
 import CreateShorUrlForm from './components/CreateShorUrlForm'
 import Navbar from './components/Navbar'
 import Footer from './Footer'
+import Redirect from './components/Redirect'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <div className='flex-1'>
         <Routes >
           <Route path='/' element={<Dashboard />} />
+          <Route path='/:id' element={<Redirect />} />
           <Route path='/add' element={<CreateShorUrlForm />} />
           <Route path='/code/:code' element={<ViewDetails />} />
         </Routes>
