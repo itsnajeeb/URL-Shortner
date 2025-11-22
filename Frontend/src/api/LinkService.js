@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// const API_BASE_URL = "http://localhost:3000/api";
+// const BACKEND_API_URL = "http://localhost:3000/api";
 const BACKEND_API_URL = "https://url-shortner-swbt.onrender.com/api";
 
 export const creatrShortUrl = async (payload) => {
@@ -20,5 +20,8 @@ export const deleteLink = async (code) => {
 };
 
 export const RedirectAPI = async (id) => {
-  return await axios.get(`${BACKEND_API_URL}/${id}`)
+  console.log("ID > ",id);
+    console.log(`${BACKEND_API_URL}/${id}`);
+    
+  return await axios.get(`${BACKEND_API_URL}/url/${id}`)
 }

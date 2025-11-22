@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import DbConnection from './src/config/db.js'
 import urlRoutes from './src/routes/shortUrl.route.js'
 import { errorHandler } from './src/utils/errorHandler.js'
-import { healthz, redirectToOriginalUrl } from './src/controllers/shortUrl.controller.js'
+import { getOriginalUrl, healthz, redirectToOriginalUrl } from './src/controllers/shortUrl.controller.js'
 
 dotenv.config('./.env')
 const app = express()
@@ -27,6 +27,7 @@ app.get('/api/healthz', healthz)
 
 app.use('/api/links', urlRoutes)
 app.use('/api/code', urlRoutes)
+app.get('/api/url/:id', getOriginalUrl)
 app.get('/api/:id', redirectToOriginalUrl)
 app.use(errorHandler);
 

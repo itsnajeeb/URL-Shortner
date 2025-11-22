@@ -17,7 +17,7 @@ const App = () => {
           <Route path='/' element={<Dashboard />} />
           <Route path='/add' element={<CreateShorUrlForm />} />
           <Route path='/code/:code' element={<ViewDetails />} />
-          <Route path='/:id' element={<Redirect />} />
+          <Route path='/url/:id' element={<Redirect />} />
         </Routes>
       </div>
 

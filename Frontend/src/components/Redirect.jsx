@@ -14,10 +14,8 @@ const Redirect = () => {
         const handleRedirect = async () => {
             try {
                 const response = await RedirectAPI(id);
-                console.log("RESPONSE > ", response);
                 
                 const originalUrl = response.data.original_url;
-                console.log("ORIGINAL URL ",originalUrl);
                 
                 window.location.href = originalUrl;
             } catch (error) {

@@ -49,6 +49,27 @@ export const redirectToOriginalUrl = async (req, res, next) => {
     }
 }
 
+
+export const getOriginalUrl = async (req, res, next) => {
+    try {
+        let { id } = req.params;
+        if (id.startsWith(":")) id = id.slice(1);
+
+        const data = await redirectToOriginalUrlServices(id);
+        console.log(data);
+        
+        if (!data) throw new NotFoundError("URL Not exist");
+
+        return res.json({
+            original_url: data.original_url,
+            short_code: data.short_code
+        });
+    } catch (err) {
+        next(err);
+    }
+};
+
+
 //Delete Url
 export const deleteUrl = async (req, res) => {
     try {
