@@ -1,8 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getLinkStats } from '../api/LinkService';
-import {FRONTEND_API} from '../api/LinkService.js';
 
 const ViewDetails = () => {
     const navigate = useNavigate();
@@ -13,7 +11,7 @@ const ViewDetails = () => {
         try {
             // const res = await axios.get(`${URL}/api/code/${code}`);
             const res = await getLinkStats(code);
-            setData(res.data?.data || []);       // <-- always an array
+            setData(res.data?.data || []);       //  always an array
         } catch (error) {
             console.log(error);
         }
@@ -60,17 +58,18 @@ const ViewDetails = () => {
 
                                 <h3>
                                     <a
-                                        href={`${FRONTEND_API}/${urlInfo.short_code}`}
-                                        className='text-blue-500'
-                                        target='_blank'
+                                        href={`${import.meta.env.VITE_BACKEND_URL}/${urlInfo.short_code}`}
+                                        target="_blank"
+                                        className="text-blue-500"
                                     >
-                                        {FRONTEND_API}/{urlInfo.short_code}
+                                        {import.meta.env.VITE_BACKEND_URL}/{urlInfo.short_code}
                                     </a>
+
                                 </h3>
 
                                 <h3>{urlInfo.short_code}</h3>
                                 <h3 className='font-semibold'>{urlInfo.clicks}</h3>
-                                <h3>{new Date(urlInfo.lastClickedAt).toLocaleString()}</h3>
+                                <h3>{urlInfo.lastClickedAt ? new Date(urlInfo.lastClickedAt).toLocaleString() : "Not click yet"}</h3>
                             </div>
                         </div>
                     ))}

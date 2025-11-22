@@ -63,13 +63,15 @@ const Dashboard = () => {
 
     return (
         <div className='mx-20 my-10'>
-            <div className='my-4'>
+            <div className='my-4 flex justify-between'>
                 <input type="text"
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
                     placeholder='Search by url or code...'
                     className='border py-2 px-4 rounded-md w-[30%] outline-0'
                 />
+                <button className='bg-green-500 px-8 py-1 text-base font-semibold text-white rounded-md cursor-pointer' onClick={() => navigate('/add')}>Create New Short URL</button>
+
             </div>
             <table className='table w-full text-center border border-collapse '>
                 <thead className='bg-gray-200 '>
@@ -104,11 +106,10 @@ const Dashboard = () => {
 
 
                                         <td className='border py-2 '>{link.clicks}</td>
-                                        <td className='border py-2 '>  {link.lastClickedAt ? new Date(link.lastClickedAt).toLocaleString() : "-"}
+                                        <td className='border py-2 '>  {link.lastClickedAt ? new Date(link.lastClickedAt).toLocaleString() : "Not Click yet"}
                                         </td>
 
                                         <td className='border py-2 space-x-5'>
-                                            <button className='bg-green-500 px-8 py-1 text-base font-semibold text-white rounded-md cursor-pointer' onClick={() => navigate('/add')}>Add</button>
 
                                             <button className='bg-red-500 px-8 py-1 text-base font-semibold text-white rounded-md cursor-pointer' onClick={() => deleteHandler(link?.short_code)}>Delete</button>
 
