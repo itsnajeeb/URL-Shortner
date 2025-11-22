@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getLinkStats } from '../api/LinkService';
+import {FRONTEND_API} from '../api/LinkService.js';
 
 const ViewDetails = () => {
     const navigate = useNavigate();
@@ -59,11 +60,11 @@ const ViewDetails = () => {
 
                                 <h3>
                                     <a
-                                        href={`${URL}/${urlInfo.short_code}`}
+                                        href={`${FRONTEND_API}/${urlInfo.short_code}`}
                                         className='text-blue-500'
                                         target='_blank'
                                     >
-                                        {URL}/{urlInfo.short_code}
+                                        {FRONTEND_API}/{urlInfo.short_code}
                                     </a>
                                 </h3>
 
