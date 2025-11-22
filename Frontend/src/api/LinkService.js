@@ -19,6 +19,6 @@ export const deleteLink = async (code) => {
   return await axios.delete(`${BACKEND_API_URL}/links/${code}`);
 };
 
-export const RedirectAPI = async () => {
-  return await axios.get(`${BACKEND_API_URL}/:id`)
+export const RedirectAPI = async (id) => {
+  return await axios.get(`${BACKEND_API_URL}/${id}`)
 }
