@@ -20,8 +20,6 @@ export const deleteLink = async (code) => {
 };
 
 export const RedirectAPI = async (id) => {
-  console.log("ID > ",id);
-    console.log(`${BACKEND_API_URL}/${id}`);
     
   return await axios.get(`${BACKEND_API_URL}/url/${id}`)
 }
